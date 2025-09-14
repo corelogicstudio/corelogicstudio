@@ -1,0 +1,60 @@
+backend:
+  name: github
+  repo: your-username/your-repo-name # Replace with your GitHub username and repo name
+  branch: main # Branch to update (usually main or master)
+
+media_folder: "public/images" # Media files will be stored in the repo under public/images
+public_folder: "/images" # The src attribute for uploaded media will begin with /images
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home"
+        name: "home"
+        file: "src/content/home.md"
+        fields:
+          - { label: "Hero Title", name: "hero_title", widget: "string" }
+          - { label: "Hero Subtitle", name: "hero_subtitle", widget: "text" }
+          - { label: "About Title", name: "about_title", widget: "string" }
+          - { label: "About Description", name: "about_description", widget: "text" }
+
+  - name: "services"
+    label: "Services"
+    folder: "src/content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Icon", name: "icon", widget: "string", hint: "Lucide icon name (e.g., Code, Palette)" }
+      - { label: "Features", name: "features", widget: "list", field: { label: "Feature", name: "feature", widget: "string" } }
+
+  - name: "team"
+    label: "Team"
+    folder: "src/content/team"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Bio", name: "bio", widget: "text" }
+      - { label: "Image", name: "image", widget: "image" }
+      - { label: "GitHub URL", name: "github", widget: "string", required: false }
+      - { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false }
+      - { label: "Twitter URL", name: "twitter", widget: "string", required: false }
+
+  - name: "settings"
+    label: "Settings"
+    files:
+      - label: "Company Info"
+        name: "company"
+        file: "src/content/company.md"
+        fields:
+          - { label: "Company Name", name: "company_name", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Address", name: "address", widget: "string" }
+          - { label: "GitHub URL", name: "github_url", widget: "string", required: false }
+          - { label: "LinkedIn URL", name: "linkedin_url", widget: "string", required: false }
+          - { label: "Twitter URL", name: "twitter_url", widget: "string", required: false }
